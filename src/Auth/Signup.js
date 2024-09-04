@@ -1,9 +1,15 @@
 import { useState } from "react"
+import { validateEmail } from "../Utils/Utils";
 
 function Signup(){
     var [Name ,setName] = useState("");
     var [Email,setEmail] = useState("");
+    var [Mobile,setMobile] = useState("");
     var [Password,setPassword] = useState("");
+    var [NameError,setNameError] = useState("");
+    var [EmailError,setEmailError] = useState("");
+    var [MobileError,setMobileError] = useState("");
+    var [PasswordError,setPasswordError] = useState("");
     
     function onhandName(e){
         setName(e.target.value)
@@ -13,12 +19,36 @@ function Signup(){
         setEmail(e.target.value)
     }
 
+    function onhandMobile(e){
+        setMobile(e.target.value)
+    }
+
     function onhandPassword(e){
         setPassword(e.target.value)
     }
 
     function onhandLogin(e){
-        console.log(Name,Email,Password)
+       if(Name.length < 3){
+        setNameError("Min 3 char")
+       }else{
+        setNameError("")
+       }
+       if(validateEmail(Email)){
+        setEmailError("")
+       }else{
+        setEmailError("EnterValid email")
+       }
+
+       if(Mobile.length === 10){
+        setMobileError("")
+       }else{
+        setMobileError("Enter valid mobile")
+       }
+       if(Password.length >= 8){
+        setPasswordError("")
+       }else{
+        setPasswordError("Enter valid password")
+       }
     }
 
     return(
@@ -29,18 +59,30 @@ function Signup(){
                     <div className="mb-3">
                         <label>Name</label>
                         <input type="text" onChange={e=>onhandName(e)} className="form-control" placeholder="Name"/>
+                        <div className="text-danger">
+                            {NameError}
+                        </div>
                     </div>
                     <div className="mb-3">
                         <label>Email</label>
                         <input type="text" onChange={e=>onhandEmail(e)} className="form-control" placeholder="Email"/>
+                        <div className="text-danger">
+                            {EmailError}
+                        </div>
                     </div>
                     <div className="mb-3">
                         <label>Mobile</label>
-                        <input type="text" onChange={e=>onhandEmail(e)} className="form-control" placeholder="Mobile Number"/>
+                        <input type="text" onChange={e=>onhandMobile(e)} className="form-control" placeholder="Mobile Number"/>
+                        <div className="text-danger">
+                            {MobileError}
+                        </div>
                     </div>
                     <div className="mb-3">
                         <label>Password</label>
                         <input type="password" onChange={e=>onhandPassword(e)} className="form-control" placeholder="Password"/>
+                        <div className="text-danger">
+                            {PasswordError}
+                        </div>
                     </div>
                     <div>
                         <button className="btn btn-warning" onClick={e=>onhandLogin(e)}>CreateAccount</button>
