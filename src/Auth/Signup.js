@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { validateEmail } from "../Utils/Utils";
+import { validateEmail } from "../utils/utize";
 
 function Signup(){
     var [Name ,setName] = useState("");
