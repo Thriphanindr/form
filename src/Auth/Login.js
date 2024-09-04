@@ -21,11 +21,13 @@ function Login(){
             setEmailError("")
         }else{
             setEmailError("Enter valid Email")
+            setEmailError++
         }
         if(Password >= 8){
             setPasswordError("")
         }else{
             setPasswordError("enter valid password")
+            setPasswordError++
         }
     }
 

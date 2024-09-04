@@ -26,10 +26,12 @@ function Signup(){
     function onhandPassword(e){
         setPassword(e.target.value)
     }
+    let noError = 0;
 
     function onhandLogin(e){
        if(Name.length < 3){
         setNameError("Min 3 char")
+        noError++
        }else{
         setNameError("")
        }
@@ -37,18 +39,26 @@ function Signup(){
         setEmailError("")
        }else{
         setEmailError("EnterValid email")
+        noError++
        }
 
        if(Mobile.length === 10){
         setMobileError("")
        }else{
         setMobileError("Enter valid mobile")
+        noError++
        }
        if(Password.length >= 8){
         setPasswordError("")
        }else{
         setPasswordError("Enter valid password")
+        noError++
        }
+    }
+
+    if(noError === 0){
+        console.log("Welcome");
+        
     }
 
     return(
