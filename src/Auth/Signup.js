@@ -32,7 +32,11 @@ function Signup(){
                     </div>
                     <div className="mb-3">
                         <label>Email</label>
-                        <input type="text" onChange={e=>onhandEmail(e)} className="form-control" placeholder="Username"/>
+                        <input type="text" onChange={e=>onhandEmail(e)} className="form-control" placeholder="Email"/>
+                    </div>
+                    <div className="mb-3">
+                        <label>Mobile</label>
+                        <input type="text" onChange={e=>onhandEmail(e)} className="form-control" placeholder="Mobile Number"/>
                     </div>
                     <div className="mb-3">
                         <label>Password</label>
